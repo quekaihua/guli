@@ -1,5 +1,6 @@
 package com.qkh.gulimall.product.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -50,6 +51,11 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
 
 
         return level1Menus;
+    }
+
+    @Override
+    public void removeMenuByIds(List<Long> asList) {
+        baseMapper.deleteBatchIds(asList);
     }
 
     public List<CategoryEntity> getChildrens(CategoryEntity root, List<CategoryEntity> all) {
